@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Final.Models.Branch>
+
+@{
+    ViewBag.Title = "Branches";
+}
+
+<h2>Branches</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Branch Id</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var branch in Model)
+        {
+            <tr>
+                <td>@branch.Bid</td>
+                <td>@branch.Baddress</td>
+                <td>@branch.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>

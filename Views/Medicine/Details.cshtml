@@ -1,0 +1,32 @@
+﻿@model Final.Models.Medicine
+
+@{
+    ViewBag.Title = "Medicine Details";
+}
+
+<h2>Details for @Model.Mname</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Medicine Name</th>
+        <td>@Model.Mname</td>
+    </tr>
+    <tr>
+        <th>Ingredient</th>
+        <td>@Model.Ingredient</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>@Model.Price</td>
+    </tr>
+   
+    <tr>
+        <th>Available at Branch</th>
+        <td>@Model.BidNavigation?.Baddress </td>
+    </tr>
+</table>
+
+<p>
+    <a href="@Url.Action("Index", "Medicine")" class="btn btn-primary">Back to List</a>
+    <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Delete</a>
+</p>

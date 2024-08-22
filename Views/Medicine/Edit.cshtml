@@ -1,0 +1,36 @@
+﻿@model Final.Models.Medicine
+
+@{
+    ViewBag.Title = "Edit Medicine";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Medicine</h1>
+        <form asp-action="Edit" method="post">
+            <div class="form-group">
+                <label for="Mname">Medicine Name:</label>
+                <input type="text" id="Mname" name="Mname" class="form-control" value="@Model.Mname" required />
+            </div>
+            <div class="form-group">
+                <label for="Ingredient">Ingredient:</label>
+                <input type="text" id="Ingredient" name="Ingredient" class="form-control" value="@Model.Ingredient" required />
+            </div>
+            <div class="form-group">
+                <label for="Price">Price:</label>
+                <input type="number" id="Price" name="Price" class="form-control" value="@Model.Price" required />
+            </div>
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

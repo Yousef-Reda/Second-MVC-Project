@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Final.Models.Medicine>
+
+@{
+    ViewBag.Title = "Medicines";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .add-button {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .btn-add-new {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-add-new:hover {
+            background-color: #218838;
+        }
+        .btn-info {
+            padding: 5px 10px;
+            color: #fff;
+            background-color: #17a2b8;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-info:hover {
+            background-color: #117a8b;
+        }
+        .btn-primary {
+            padding: 5px 10px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-search {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-search:hover {
+                background-color: #218838;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="@Url.Action("Search", "Medicine")" method="get">
+            <input type="text" name="query" placeholder="Search for a medicine" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 300px; margin-right: 10px;" />
+            <button type="submit" class="btn-search">Search</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <p style="color: red; margin-top: 10px;">@ViewBag.Message</p>
+        }
+
+    </div>
+
+
+    <div class="container">
+        <div class="add-button">
+            <a href="@Url.Action("Create", "Medicine")" class="btn-add-new">Add New Medicine</a>
+        </div>
+        <h2>Medicines</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var medicine in Model)
+                {
+                    <tr>
+                        <td>@medicine.Mname</td>
+                        <td>
+                            <a href="@Url.Action("Details", "Medicine", new { id = medicine.Id })" class="btn btn-info">Details</a>
+                            <a href="@Url.Action("AvailableAt", "Medicine", new { id = medicine.Id })" class="btn btn-primary">Available At</a>
+                            <a href="@Url.Action("Edit", "Medicine", new { id = medicine.Id })" class="btn btn-info">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

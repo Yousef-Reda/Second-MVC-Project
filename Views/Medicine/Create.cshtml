@@ -1,0 +1,39 @@
+﻿@model Final.Models.Medicine
+
+@{
+    ViewBag.Title = "Create New Medicine";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Create New Medicine</h1>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label for="Mname">Medicine Name:</label>
+                <input type="text" id="Mname" name="Mname" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Ingredient">Ingredient:</label>
+                <input type="text" id="Ingredient" name="Ingredient" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Price">Price:</label>
+                <input type="number" id="Price" name="Price" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Bid">Branch ID:</label>
+                <input type="number" id="Bid" name="Bid" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
